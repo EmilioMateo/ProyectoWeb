@@ -1,0 +1,57 @@
+.tamaño-logo{
+    height: 135px;
+    width: 210px;
+}
+
+.contenedor-login{
+    background-color: #AAC2BA;
+    box-shadow: inset -2px 2px 0px 1px rgba(0, 0, 0, 0.267);
+    border-radius: 10px;
+}
+
+.btn-personalizado{
+    display: block;
+    max-width: 100%;
+    background-color: #795481;
+    color:white;
+    height: auto;
+    font-family: 'Be Vietnam Pro';
+    box-shadow: inset -2px 2px 0px 1px rgba(0, 0, 0, 0.267);
+    border: 0px solid black;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-personalizado:hover{
+    background-color: white;
+    color:#795481;
+    box-shadow: inset -2px 2px 0px rgba(183, 0, 255, 0.267);
+    border-radius: 10px;
+}
+
+.textbox-personalizado{
+    display: block;
+    font-family: 'Be Vietnam Pro';
+    background-color: #FCF9E6;
+    color: #5D5A5A;
+    border: 0px solid black;
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: inset -2px 2px 0px 1px rgba(0, 0, 0, 0.267);
+    box-shadow: 2px -2px 0px 1px rgba(0, 0, 0, 0.267);
+}
+
+.separador-login{
+    width: 80%;
+    height: 15px;
+    background-color: #95ACA4;
+}
+
+.btn-toggle.activo{
+    position: relative;
+    bottom: 10px;
+}
+
+.btn-toggle{
+    transition: all 1s ease;
+}
