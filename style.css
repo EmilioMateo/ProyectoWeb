@@ -47,11 +47,52 @@
     background-color: #95ACA4;
 }
 
-.btn-toggle.activo{
+.separador-central-tareas{
+    width: 100%;
+    height: 15px;
+    background-color: #95ACA4;
+}
+
+.btn-toggle.on{
     position: relative;
     bottom: 10px;
 }
 
-.btn-toggle{
-    transition: all 1s ease;
+.diseño-r1{
+    background-color: #BAD3DD;
+    box-shadow: inset 0px 2px 0px 1px rgba(0, 0, 0, 0.267);
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.diseño-r2{
+    background-color: #D2EAF3;
+    box-shadow: inset 0px 2px 0px 1px rgba(0, 0, 0, 0.267);
+    border-radius: 10px;
+    width: fit-content;
+}
+
+p{
+    font-family: 'Be Vietnam Pro';
+    color: black;
+}
+
+.btn-personalizado:active {
+    background-color: #402d46;
+    box-shadow: inset -2px 2px 0px rgba(12, 11, 12, 0.267);
+    color:white;
+}
+
+.btn-personalizado2{
+    background-color: #D2EAF3;
+    box-shadow: inset 0px 2px 0px 1px rgba(0, 0, 0, 0.267);
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.btn-personalizado2:active{
+    background-color: #91c5d8;
+    box-shadow: inset 0px 2px 0px 1px rgba(0, 0, 0, 0.267);
+    border-radius: 10px;
+    width: fit-content;
 }

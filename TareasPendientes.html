@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+
+    <!-- adjuntar el css del bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- link pa adjuntar la fuente q vamos a usar -->
+    <link href="https://fonts.cdnfonts.com/css/be-vietnam-pro" rel="stylesheet">
+
+    <!-- adjuntar nuestro css -->
+    <link href="style.css" rel="stylesheet">
+    <title>Tareas</title>
+</head>
+<body style="background-color: #FCF9E6;">
+    
+    <div class="container w-100">
+        <img src="cyncroLogo.png" class="m-2" alt="logo cyncro" style="height: 90px; width: 140px;">
+        <div class="card mx-auto contenedor-login border-0 py-2 px-3">
+            <div class="d-flex flex-wrap justify-content-center gap-4" style="position: relative; top: -35px">
+                <button id="pendiente" class="btn-personalizado btn-toggle px-4 py-2" style="font-size: 22px">Pendientes</button>
+                <button class="btn-personalizado btn-toggle px-4 py-2" style="font-size: 22px;" onclick="location.href='TareasCompletadas.html'">Completadas</button>
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-between mb-2">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="diseño-r1 py-1 px-3" style="z-index: 10;">
+                        <p class="mb-0" style="font-size: 25px;">Hoy</p>
+                    </div>
+                    <div class="card diseño-r2 px-5 py-4" style="position: relative; top: -15px;">
+                        <p class="mb-0" style="font-size: 60px;">123</p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                    <div class="diseño-r1 py-1 px-3" style="z-index: 10;">
+                        <p class="mb-0" style="font-size: 25px;">Semana</p>
+                    </div>
+                    <div class="card diseño-r2 px-5 py-4" style="position: relative; top: -15px;">
+                        <p class="mb-0" style="font-size: 60px;">123</p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                    <div class="diseño-r1 py-1 px-3" style="z-index: 10;">
+                        <p class="mb-0" style="font-size: 25px;">Total</p>
+                    </div>
+                    <div class="card diseño-r2 px-5 py-4" style="position: relative; top: -15px;">
+                        <p class="mb-0" style="font-size: 60px;">123</p>
+                    </div>
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-center gap-2">
+                    <button id="pendiente" class="btn-personalizado px-5 py-2" style="font-size: 25px">Filtros</button>
+                    <button class="btn-personalizado px-5 py-2" style="font-size: 25px;">Agregar</button>
+                </div>
+            </div>
+
+            <div class="separador-central-tareas mb-2 mx-auto"></div>
+
+            <!-- esto de abajo es la template pero fuera de la etiqueta template, lo pongo fuera pa q se muestre un ejemplo en pantalla, si nomás lo dejo en la de template entonces no se ve en pantalla, ya después cuando tengas programado q se muestre con la template puedes borrar esto de abajo -->
+            <div class="d-flex flex-wrap justify-content-between" style="align-items: center;">
+                <button class="btn-personalizado2 p-2 justify-content-center" style="border: 0px solid black;">
+                    <img src="completarTareaLogo.png" alt="completar tarea logo" style="height: 35px; width: 35px;">
+                </button>
+                <div class="d-flex flex-column" style="width: 500px;">
+                    <div class="diseño-r2 px-2 py-2" style="width: 100%;">
+                        <p style="margin: 0;">Titulo de la tarea</p>
+                    </div>
+                    <div class="diseño-r1 px-2 py-1" style="border-radius: 20px;">
+                        <p style="margin: 0;">Fecha entrega</p>
+                    </div>
+                </div>  
+                <div class="d-flex flex-column" style="width: 400px;">
+                    <div class="diseño-r1 px-2 py-2" style="width: 100%;">
+                        <p style="margin: 0;">Nombre de la materia</p>
+                    </div>
+                </div>
+                <button class="btn-personalizado2 p-2 justify-content-center" style="border: 0px solid black;">
+                    <img src="editarTareaLogo.png" alt="completar tarea logo" style="height: 35px; width: 35px;">
+                </button>
+                <button class="btn-personalizado2 p-2 justify-content-center" style="border: 0px solid black;">
+                    <img src="eliminarTareaLogo.png" alt="completar tarea logo" style="height: 35px; width: 35px;">
+                </button>
+            </div>
+
+            <!-- ahora si en template -->
+            <template>
+                <div class="d-flex flex-wrap justify-content-between" style="align-items: center;">
+                    <button class="btn-personalizado2 p-2 justify-content-center" style="border: 0px solid black;">
+                        <img src="completarTareaLogo.png" alt="completar tarea logo" style="height: 35px; width: 35px;">
+                    </button>
+                    <div class="d-flex flex-column" style="width: 500px;">
+                        <div class="diseño-r2 px-2 py-2" style="width: 100%;">
+                            <p style="margin: 0;">Titulo de la tarea</p>
+                        </div>
+                        <div class="diseño-r1 px-2 py-1" style="border-radius: 20px;">
+                            <p style="margin: 0;">Fecha entrega</p>
+                        </div>
+                    </div>  
+                    <div class="d-flex flex-column" style="width: 400px;">
+                        <div class="diseño-r1 px-2 py-2" style="width: 100%;">
+                            <p style="margin: 0;">Nombre de la materia</p>
+                        </div>
+                    </div>
+                    <button class="btn-personalizado2 p-2 justify-content-center" style="border: 0px solid black;">
+                        <img src="editarTareaLogo.png" alt="completar tarea logo" style="height: 35px; width: 35px;">
+                    </button>
+                    <button class="btn-personalizado2 p-2 justify-content-center" style="border: 0px solid black;">
+                        <img src="eliminarTareaLogo.png" alt="completar tarea logo" style="height: 35px; width: 35px;">
+                    </button>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <!-- este script solo levanta el botón de completadas para q el usuario sepa q está en esa sección -->
+    <script>
+        let botonInicial = document.getElementById("pendiente");
+        botonInicial.classList.add('on');
+
+        const botones = document.querySelectorAll('.btn-toggle');
+
+        botones.forEach(boton => {
+            boton.addEventListener('click', () => {
+                botones.forEach(b => b.classList.remove('on'));
+                boton.classList.add('on');
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
