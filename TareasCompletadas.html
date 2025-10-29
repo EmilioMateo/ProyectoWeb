@@ -15,10 +15,13 @@
     <title>Tareas</title>
 </head>
 <body style="background-color: #FCF9E6;">
-    
+    <div hidden>
+        <p id="status">D</p>
+    </div>
+
     <div class="container w-100">
         <img src="cyncroLogo.png" class="m-2" alt="logo cyncro" style="height: 90px; width: 140px;">
-        <div class="card mx-auto contenedor-login border-0 py-2 px-3">
+        <div class="card mx-auto contenedor-login border-0 py-2 px-3" id="tareas">
             <div class="d-flex flex-wrap justify-content-center gap-4" style="position: relative; top: -35px">
                 <button class="btn-personalizado btn-toggle px-4 py-2" style="font-size: 22px" onclick="location.href='TareasPendientes.html'">Pendientes</button>
                 <button id="completado" class="btn-personalizado btn-toggle px-4 py-2" style="font-size: 22px;">Completadas</button>
@@ -57,31 +60,8 @@
 
             <div class="separador-central-tareas mb-2 mx-auto"></div>
 
-            <!-- esto de abajo es la template pero fuera de la etiqueta template, lo pongo fuera pa q se muestre un ejemplo en pantalla, si nomás lo dejo en la de template entonces no se ve en pantalla, ya después cuando tengas programado q se muestre con la template puedes borrar esto de abajo -->
-            <div class="d-flex flex-wrap justify-content-between" style="align-items: center;">
-                <div class="d-flex flex-column" style="width: 550px;">
-                    <div class="diseño-r2 px-2 py-2" style="width: 100%;">
-                        <p style="margin: 0;">Titulo de la tarea</p>
-                    </div>
-                    <div class="diseño-r1 px-2 py-1" style="border-radius: 20px;">
-                        <p style="margin: 0;">Fecha entrega</p>
-                    </div>
-                </div>  
-                <div class="d-flex flex-column" style="width: 400px;">
-                    <div class="diseño-r1 px-2 py-2" style="width: 100%;">
-                        <p style="margin: 0;">Nombre de la materia</p>
-                    </div>
-                </div>
-                <button class="btn-personalizado2 p-2 justify-content-center" style="border: 0px solid black;">
-                    <img src="editarTareaLogo.png" alt="completar tarea logo" style="height: 35px; width: 35px;">
-                </button>
-                <button class="btn-personalizado2 p-2 justify-content-center" style="border: 0px solid black;">
-                    <img src="eliminarTareaLogo.png" alt="completar tarea logo" style="height: 35px; width: 35px;">
-                </button>
-            </div>
-
-            <!-- ahora si en template -->
-            <template>
+         
+            <template id="tarea">
                 <div class="d-flex flex-wrap justify-content-between" style="align-items: center;">
                     <div class="d-flex flex-column" style="width: 550px;">
                         <div class="diseño-r2 px-2 py-2" style="width: 100%;">
@@ -106,6 +86,8 @@
             </template>
         </div>
     </div>
+
+    <script src="acomodarTareas.js"></script>
 
     <!-- este script solo levanta el botón de completadas para q el usuario sepa q está en esa sección -->
     <script>
