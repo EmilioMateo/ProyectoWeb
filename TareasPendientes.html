@@ -19,8 +19,13 @@
         <p id="status">P</p>
     </div>
 
+    <!-- nomas de recordatorio agregué un botón para cerrar sesión para q pls le pongan la función -->
+
     <div class="container w-100">
-        <img src="cyncroLogo.png" class="m-2" alt="logo cyncro" style="height: 90px; width: 140px;">
+        <div class="d-flex flex-wrap justify-content-between" style="align-items: center;">
+            <img src="cyncroLogo.png" class="m-2" alt="logo cyncro" style="height: 90px; width: 140px;">
+            <button class="btn-personalizado py-2 px-3" style="font-size: 20px;">Cerrar sesión</button>
+        </div>
         <div class="card mx-auto contenedor-login border-0 py-2 px-3" id="tareas">
             <div class="d-flex flex-wrap justify-content-center gap-4" style="position: relative; top: -35px">
                 <button id="pendiente" class="btn-personalizado btn-toggle px-4 py-2" style="font-size: 22px">Pendientes</button>
@@ -53,14 +58,11 @@
                     </div>
                 </div>
                 <div class="d-flex flex-column align-items-center justify-content-center gap-2">
-                    <button id="pendiente" class="btn-personalizado px-5 py-2" style="font-size: 25px">Filtros</button>
-                    <button class="btn-personalizado px-5 py-2" style="font-size: 25px;">Agregar</button>
+                    <button class="btn-personalizado px-5 py-2" data-bs-toggle="modal" data-bs-target="#modalAgregarPendientes" style="font-size: 25px;">Agregar</button>
                 </div>
             </div>
 
             <div class="separador-central-tareas mb-2 mx-auto"></div>
-
-         
 
             <!-- ahora si en template -->
             <template id="tarea">
@@ -81,7 +83,7 @@
                             <p style="margin: 0;">Nombre de la materia</p>
                         </div>
                     </div>
-                    <button class="btn-personalizado2 p-2 justify-content-center" style="border: 0px solid black;">
+                    <button class="btn-personalizado2 p-2 justify-content-center" data-bs-toggle="modal" data-bs-target="#modalEditarPendientes" style="border: 0px solid black;">
                         <img src="editarTareaLogo.png" alt="completar tarea logo" style="height: 35px; width: 35px;">
                     </button>
                     <button class="btn-personalizado2 p-2 justify-content-center" style="border: 0px solid black;">
@@ -89,6 +91,100 @@
                     </button>
                 </div>
             </template>
+        </div>
+    </div>
+
+    <!-- modal q se muestra para cuando quieres agregar tareas nuevas -->
+    <div id="modalAgregarPendientes" class="modal fade" style="position: absolute;">
+        <div class="modal-dialog modal-dialog-center">
+            <div class="modal-content contenedor-login d-flex flex-column align-items-center gap-2 px-5 py-2" style="z-index: 20">
+                
+                <input type="text" class="textbox-personalizado py-2 px-1 mt-4" placeholder="Nombre de Tarea" style="font-size: 25px; z-index: 22;" >
+                <select class="textbox-personalizado py-2 px-1 mt-2" placeholder="Materia" style="font-size: 25px; z-index: 22;">
+
+                    <!-- estas son las opciones de materias disponibles de momento solamente le agrego opciones con -->
+                    <!-- la etiqueta <option>, ya en el código pa ver q materias tiene el morro disponible las tendran -->
+                    <!-- que sacar de la BD, guardarlas en un arreglo, y luego ya en mediante un ciclo como el for each -->
+                    <!-- ir creando un elemento de tipo <option> al q le ponen en su atributo "value" el elemtno actual -->
+                    <!-- del arreglo y luego ese option agregarselo al select principal q es el de aquí arribita -->
+                    <!-- igual si tienen dudas o algo me pregunta o hasta a gpt, acuerdense q el chiste de gpt es usarlo pa -->
+                    <!-- investigar / entender algo, no para q te programe algo el -->
+
+                    <option value="" selected disabled hidden>Materia</option>
+                    <option>Programacion Web</option>
+                    <option>Programacion Orientada a Objetos</option>
+                    <option>Duplicación II</option>
+                    <option>Redes I</option>
+                    <option>No se alv</option>
+                </select>
+                <button class="btn-personalizado px-5 py-2" data-bs-toggle="modal" data-bs-target="#modalMateriasPendientes" data-bs-dismiss="modal" style="font-size: 20px; top: -12px; z-index: 21; position: relative;">Agregar Materias</button>
+
+                <input type="date" class="textbox-personalizado py-2 px-1" placeholder="Fecha de Entrega" style="font-size: 25px;">
+
+                <div class="d-flex flex-wrap gap-3 mt-2 mb-4 z-index: 22;">
+                    <button data-bs-dismiss="modal" class="btn-personalizado px-5 py-2" style="font-size: 20px">Cancelar</button>
+                    <button class="btn-personalizado px-5 py-2" style="font-size: 20px">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal q se muestra cuando quieres agregar materias -->
+    <div id="modalMateriasPendientes" class="modal fade">
+        <div class="modal-dialog modal-dialog-center">
+            <div class="modal-content contenedor-login d-flex flex-column align-items-center gap-2 px-5 py-2" style="z-index: 20">
+                <input type="text" class="textbox-personalizado py-2 px-1 mt-4" placeholder="Nombre de Materia" style="font-size: 25px;">
+
+                <div class="d-flex flex-wrap gap-3 mt-2">
+                    <button data-bs-dismiss="modal" class="btn-personalizado px-5 py-2" style="font-size: 20px">Cancelar</button>
+                    <button class="btn-personalizado px-5 py-2" style="font-size: 20px">Guardar</button>
+                </div>
+
+                <div class="diseño-r1 py-2 px-1 mt-2" style="font-size: 25px;">Lista de Materias</div>
+
+                <!-- esta es la template q pueden usar para mostrar cada elemento del listado -->
+                <!-- de materias, solamente pls ponganle en el código q al último elemento del -->
+                <!-- del listado le agreguen la clase "mb-4" para q quede simetrico pls se los ruego estoy en mis rodillas -->
+
+                <template>
+                    <div class="d-flex flex-wrap justify-content-between mt-2"> 
+                        <div class="diseño-r1 px-2 py-2">
+                            <p style="margin: 0; font-size: 20px;">Nombre de la materia</p>
+                        </div>
+
+                        <button class="btn-personalizado2 p-2" style="border: 0px solid black;">
+                            <img src="editarTareaLogo.png" alt="completar tarea logo" style="height: 35px; width: 35px;">
+                        </button>
+                        <button class="btn-personalizado2 p-2" style="border: 0px solid black;">
+                            <img src="eliminarTareaLogo.png" alt="completar tarea logo" style="height: 35px; width: 35px;">
+                        </button>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal q se muestra cuando quiereseditar una tarea -->
+    <div id="modalEditarPendientes" class="modal fade">
+        <div class="modal-dialog modal-dialog-center">
+            <div class="modal-content contenedor-login d-flex flex-column align-items-center gap-2 px-5 py-2">
+                
+                <!-- para esta parte van a tener q agarrar el nombre, materia y fecha de entrega -->
+                <!-- del elemento q se quiere editar y colocar sus valores en los input como el -->
+                <!-- value por defecto, por ejemplo si quiero editar "tarea 1" de la materia "abc" -->
+                <!-- el value por defecto q le pondrían al input de Nombre tarea sería literamente -->
+                <!-- "tarea 1" y al input de nombre de materia sería "abc", nomás les pongo esto aquí -->
+                <!-- pa q sepan q tienen q hacer con estos inputs vacíos -->
+
+                <input type="text" class="textbox-personalizado py-2 px-1 mt-4" placeholder="Nombre de Tarea" style="font-size: 25px;" >
+                <input type="text" class="textbox-personalizado py-2 px-1 mt-2" placeholder="Nombre de Materia" style="font-size: 25px;" >
+                <input type="date" class="textbox-personalizado py-2 px-1 mt-2" placeholder="Fecha de Entrega" style="font-size: 25px;">
+
+                <div class="d-flex flex-wrap gap-3 mt-2 mb-4;">
+                    <button data-bs-dismiss="modal" class="btn-personalizado px-5 py-2" style="font-size: 20px">Cancelar</button>
+                    <button class="btn-personalizado px-5 py-2" style="font-size: 20px">Guardar</button>
+                </div>
+            </div>
         </div>
     </div>
 
