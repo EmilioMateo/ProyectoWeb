@@ -17,7 +17,7 @@ $check->store_result();
 if ($check->num_rows > 0) {
     echo "Error: El usuario ya existe.";
 } else {
-    // 2. Encriptar la contraseña
+
     $pass_hash = password_hash($contrasena, PASSWORD_DEFAULT);
 
     $stmt = $conn->prepare("INSERT INTO usuarios (nombre, contrasena) VALUES (?, ?)");
