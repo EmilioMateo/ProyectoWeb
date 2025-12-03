@@ -1,31 +1,36 @@
 <?php
 
-$correo = $_POST['correo_electronico'];
+include 'conexion.php';
+
+if (!isset($_POST['correo_electronico']) || !isset($_POST['contrasena'])) {
+    die("Error: No se recibieron datos. Debes usar el formulario de registro.");
+}
+
+$nombre_usuario = $_POST['correo_electronico']; 
 $contrasena = $_POST['contrasena'];
 
-$host = 'localhost';
-$port = '5432';
-$dbname = 'Proyecto_web';
-$user = 'postgres';
-$password = 'Emiliano+2945';
+$check = $conn->prepare("SELECT id FROM usuarios WHERE nombre = ?");
+$check->bind_param("s", $nombre_usuario);
+$check->execute();
+$check->store_result();
 
-$conexion_string = "host=$host port=$port dbname=$dbname user=$user password=$password";
+if ($check->num_rows > 0) {
+    echo "Error: El usuario ya existe.";
+} else {
+    // 2. Encriptar la contraseña
+    $pass_hash = password_hash($contrasena, PASSWORD_DEFAULT);
 
-$dbconn = pg_connect($conexion_string);
+    $stmt = $conn->prepare("INSERT INTO usuarios (nombre, contrasena) VALUES (?, ?)");
+    $stmt->bind_param("ss", $nombre_usuario, $pass_hash);
 
-if(!$dbconn){
-    echo "Error: no se pudo conectar a la base de datos";
-    exit;
+    if ($stmt->execute()) {
+        echo "Registro Exitoso";
+    } else {
+        echo "Error al registrar: " . $conn->error;
+    }
+    $stmt->close();
 }
 
-$Solicitud = "INSERT INTO registro (correo_electronico , contrasena) VALUES ('$correo','$contrasena')";
-$resultado = pg_query($dbconn, $Solicitud);
-
-if($resultado){
-    echo "Registro Exitoso";
-}
-else{
-    echo "error al registrar: " . pg_last_error($dbconn);
-}
-pg_close($dbconn);
+$check->close();
+$conn->close();
 ?>
