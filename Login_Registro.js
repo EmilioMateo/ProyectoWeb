@@ -58,7 +58,7 @@ btnAccion.addEventListener("click", () => {
             console.log("Respuesta servidor:", texto);
             if (texto.includes("Bienvenido")) {
                 alert(texto);
-                window.location.href = "TareasPendientes.html";
+                window.location.href = "TareasPendientes.php";
             } else {
                 alert(texto); 
             }
